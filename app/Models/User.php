@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 
 
 class User extends Authenticatable implements JWTSubject
@@ -41,7 +43,10 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
-
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->role === 'admin';
+    }
 
     public function getJWTIdentifier()
     {
