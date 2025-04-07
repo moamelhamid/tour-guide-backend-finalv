@@ -13,7 +13,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable implements JWTSubject, FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
